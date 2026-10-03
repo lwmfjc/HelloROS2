@@ -23,6 +23,10 @@ public:
         // 去掉这行那就是标准的模版，以后直接复制来用即可
         // 这里this是一个指针，不是对象
         RCLCPP_INFO(this->get_logger(), "Hello world");
+        //每隔 1 秒，自动调用一次 MyNode 类中的 timerCallback() 成员函数。
+        //std::bind() 是 C++ 标准库 <functional> 提供的函数适配工具，可以将一个函数和它需要的参数预先绑定，生成一个以后可以调用的对象。注意【预先】
+        //普通函数可以直接通过函数名传递，但非静态成员函数还需要指定由哪个对象来调用。这就是为什么还要this
+        //因此，生成的可调用对象在执行时，等价于：this->timerCallback();
         timer_=this->create_wall_timer(std::chrono::seconds(1),
                         std::bind(&MyNode::timerCallback,this));
     }
