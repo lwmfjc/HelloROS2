@@ -9,16 +9,15 @@ endif()
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
 
-if(BUILD_TESTING)
-  find_package(ament_lint_auto REQUIRED)
-  # the following line skips the linter which checks for copyrights
-  # comment the line when a copyright and license is added to all source files
-  set(ament_cmake_copyright_FOUND TRUE)
-  # the following line skips cpplint (only works in a git repo)
-  # comment the line when this package is in a git repo and when
-  # a copyright and license is added to all source files
-  set(ament_cmake_cpplint_FOUND TRUE)
-  ament_lint_auto_find_test_dependencies()
-endif()
+#添加可执行文件及其依赖项
+add_executable(cpp_node src/my_first_node.cpp)
+ament_target_dependencies(cpp_node rclcpp)
+
+#安装
+#将可执行文件安装到 lib/${PROJECT_NAME}
+install(TARGETS
+  cpp_node
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ament_package()
