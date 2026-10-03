@@ -49,7 +49,7 @@ int main(int argc, char **argv)
     // ros2中所有东西都使用智能指针
     // 创建了一个指向节点对象的共享指针
     // 传递节点名称作为参数
-    auto node = std::make_shared<MyNode>("cpp_test");
+    auto node = std::make_shared<MyNode>();
     // 传入共享指针即可
     // spin将使节点保持存活
     rclcpp::spin(node);
