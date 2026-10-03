@@ -5,13 +5,23 @@
 import rclpy 
 from rclpy.node import Node
 
+class MyNode(Node):
+    def __init__(self):
+        super().__init__("py_test")
+        #简单的为这个类添加属性counter_
+        self.counter_=0
+        self.get_logger().info("Hello world")
+        #多少秒(1.0秒)调用一次 callback
+        self.create_timer(1.0,self.timer_callback)
+    def timer_callback(self):
+        self.get_logger().info("Hello" + str(self.counter_))
+        self.counter_+=1
+
 def main(args=None):
     #将初始化ROS2通信以及需要的所有内容，以便创建和使用节点
     rclpy.init(args=args)
     #创建一个节点，给它一个名称：py_test
-    node=Node("py_test")
-    #在终端打印内容
-    node.get_logger().info("Hello world");
+    node=MyNode() 
     #spin将使节点保持存活，知道按下Ctrl+C
     rclpy.spin(node)
     #关闭
