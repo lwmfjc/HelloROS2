@@ -7,6 +7,7 @@ from rclpy.node import Node
 
 class MyNode(Node):
     def __init__(self):
+        #给节点名称
         super().__init__("py_test")
         #简单的为这个类添加属性counter_
         self.counter_=0
@@ -20,9 +21,9 @@ class MyNode(Node):
 def main(args=None):
     #将初始化ROS2通信以及需要的所有内容，以便创建和使用节点
     rclpy.init(args=args)
-    #创建一个节点，给它一个名称：py_test
+    #创建一个节点 
     node=MyNode() 
-    #spin将使节点保持存活，知道按下Ctrl+C
+    #spin将使节点保持存活，直到按下Ctrl+C
     rclpy.spin(node)
     #关闭
     rclpy.shutdown()
