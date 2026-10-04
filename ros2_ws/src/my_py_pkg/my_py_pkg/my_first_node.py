@@ -10,7 +10,7 @@ class MyNode(Node):
         super().__init__("py_test")
         #简单的为这个类添加属性counter_
         self.counter_=0
-        self.get_logger().info("Hello world")
+        self.get_logger().info("Hello world ")
         #多少秒(1.0秒)调用一次 callback
         self.create_timer(1.0,self.timer_callback)
     def timer_callback(self):
