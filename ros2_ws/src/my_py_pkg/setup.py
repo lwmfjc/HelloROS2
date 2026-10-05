@@ -29,7 +29,8 @@ setup(
             #py_node 是可执行文件的名称
             #可以再添加其他的可执行文件，和上面同样的格式即可
             "py_node = my_py_pkg.my_first_node:main",
-            "robot_news_station = my_py_pkg.robot_news_station:main"
+            "robot_news_station = my_py_pkg.robot_news_station:main",
+            "smartphone=my_py_pkg.smartphone:main"
         ],
     },
 )
