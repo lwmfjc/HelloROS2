@@ -10,7 +10,11 @@
   <buildtool_depend>ament_cmake</buildtool_depend>
 
   <depend>rclcpp</depend>
-  <!--声明依赖关系，声明“我的包依赖 example_interfaces”-->
+
+  <!--声明依赖关系，声明“我的包依赖
+  example_interfaces”-->
+  <!--例如别人拿到你的包，在另一台电脑上安装依赖时，可以根据
+  package.xml 知道应该安装什么-->
   <depend>example_interfaces</depend>
 
   <test_depend>ament_lint_auto</test_depend>
