@@ -27,8 +27,9 @@ setup(
             #文件夹my_py_pkg下的my_first_node.py文件
             #main是.py文件中的函数
             #py_node 是可执行文件的名称
-            "py_node = my_py_pkg.my_first_node:main",
             #可以再添加其他的可执行文件，和上面同样的格式即可
+            "py_node = my_py_pkg.my_first_node:main",
+            "robot_news_station = my_py_pkg.robot_news_station:main"
         ],
     },
 )
