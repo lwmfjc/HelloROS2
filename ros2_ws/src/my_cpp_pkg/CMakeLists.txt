@@ -21,11 +21,15 @@ ament_target_dependencies(cpp_node rclcpp)
 add_executable(robot_news_station src/robot_news_station.cpp)
 ament_target_dependencies(robot_news_station rclcpp example_interfaces)
 
+add_executable(smartphone src/smartphone.cpp)
+ament_target_dependencies(smartphone rclcpp example_interfaces)
+
 #安装
 #将可执行文件安装到 lib/${PROJECT_NAME}
 install(TARGETS
   cpp_node
   robot_news_station #再添加一个可执行文件
+  smartphone
   DESTINATION lib/${PROJECT_NAME}
 )
 
