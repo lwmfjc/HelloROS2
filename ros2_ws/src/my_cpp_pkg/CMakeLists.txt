@@ -8,15 +8,24 @@ endif()
 # find dependencies
 find_package(ament_cmake REQUIRED)
 find_package(rclcpp REQUIRED)
+#将依赖项链接到可执行文件时也要使用它
+#查找并配置依赖
+#找到已经安装的 example_interfaces，并把它提供的 CMake 配置信息加载进来。
+find_package(example_interfaces REQUIRED)
 
 #添加可执行文件及其依赖项
 add_executable(cpp_node src/my_first_node.cpp)
 ament_target_dependencies(cpp_node rclcpp)
 
+#再添加可执行文件及其依赖
+add_executable(robot_news_station src/robot_news_station.cpp)
+ament_target_dependencies(robot_news_station rclcpp example_interfaces)
+
 #安装
 #将可执行文件安装到 lib/${PROJECT_NAME}
 install(TARGETS
   cpp_node
+  robot_news_station #再添加一个可执行文件
   DESTINATION lib/${PROJECT_NAME}
 )
 
