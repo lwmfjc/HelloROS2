@@ -9,7 +9,7 @@ from example_interfaces.msg import String
 
 class MyCustomNode(Node):  # MODIFY NAME
     def __init__(self):
-        super().__init__("py_test")  # MODIFY NAME
+        super().__init__("robot_news_station")  # MODIFY NAME
         self.robot_name_ = "C3PO"
         # 创建发布者
         # 类型，话题名称，队列大小

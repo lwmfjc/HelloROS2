@@ -4,7 +4,7 @@ from rclpy.node import Node
 
 class MyCustomNode(Node): #MODIFY NAME
     def __init__(self):
-        super().__init__("robot_news_station")  #MODIFY NAME
+        super().__init__("node_name")  #MODIFY NAME
         
 def main(args=None):
     rclpy.init(args=args) 
