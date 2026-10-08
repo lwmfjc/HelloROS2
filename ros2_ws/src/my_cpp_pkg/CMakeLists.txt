@@ -24,12 +24,16 @@ ament_target_dependencies(robot_news_station rclcpp example_interfaces)
 add_executable(smartphone src/smartphone.cpp)
 ament_target_dependencies(smartphone rclcpp example_interfaces)
 
+add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+ament_target_dependencies(add_two_ints_server rclcpp example_interfaces)
+
 #安装
 #将可执行文件安装到 lib/${PROJECT_NAME}
 install(TARGETS
   cpp_node
   robot_news_station #再添加一个可执行文件
   smartphone
+  add_two_ints_server
   DESTINATION lib/${PROJECT_NAME}
 )
 
