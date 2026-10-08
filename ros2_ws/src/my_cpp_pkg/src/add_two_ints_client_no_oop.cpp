@@ -9,9 +9,18 @@ int main(int argc, char **argv)
     rclcpp::init(argc, argv);
     auto node = std::make_shared<rclcpp::Node>("add_two_ints_client_no_oop");
     auto client = node->create_client<example_interfaces::srv::AddTwoInts>("add_two_ints");
-    while (client->wait_for_service(1.0s))
+
+    // 如果 1.0 秒内找到了 Service，则返回True；没找到则False
+    while (!client->wait_for_service(1.0s))
     {
-        RCLCPP_INFO(node->get_logger(), "Waiting for the server...");
+        //ros是否处于正常运行状态
+        //如果不是则退出(被ctrl+c)
+        if (!rclcpp::ok())
+        {
+            RCLCPP_INFO(node->get_logger(), "Interrupted while waiting for the service.");
+            return 0;
+        }
+        RCLCPP_WARN(node->get_logger(), "Waiting for the server...");
     }
 
     // 创建请求的共享指针
