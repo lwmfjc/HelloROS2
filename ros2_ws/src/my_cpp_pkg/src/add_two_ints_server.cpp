@@ -19,6 +19,7 @@ private:
     {
         response->sum = request->a + request->b;
         //request->a 是 int64_t，而 %d 期待 int，所以显式转换成 int。
+        //不过，直接强转成 int 有潜在的数据截断问题
         RCLCPP_INFO(this->get_logger(), "%d + %d = %d", (int)request->a,
                     (int)request->b, (int)response->sum);
 
