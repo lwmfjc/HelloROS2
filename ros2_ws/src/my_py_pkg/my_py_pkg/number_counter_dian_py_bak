@@ -2,7 +2,6 @@
 import rclpy
 from rclpy.node import Node
 from example_interfaces.msg import Int64
-from example_interfaces.srv import SetBool
 
 
 class NumberCounterNode(Node):
@@ -14,26 +13,7 @@ class NumberCounterNode(Node):
         self.number_subscriber_ = self.create_subscription(
             Int64, "number", self.callback_number, 10
         )
-        self.reset_counter_service_ = self.create_service(
-            SetBool,
-            "reset_counter",self.callback_reset_counter
-        )
         self.get_logger().info("Number Counter has been started.")
-
-    #重置计数器
-    def callback_reset_counter(
-        self, request: SetBool.Request, response: SetBool.Response
-    ):
-        #如果请求重置计数器，那么就将计数器重置为0
-        if request.data:
-            self.counter_=0
-            response.success=True
-            response.message='ok'
-        else:
-            response.success=False
-            response.message="Counter has not been reset"
-        #一定要返回响应
-        return response
 
     def callback_number(self, msg: Int64):
         # info参数必须是字符串，否则会报错
