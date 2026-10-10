@@ -14,6 +14,7 @@ find_package(rosidl_default_generators REQUIRED)
 rosidl_generate_interfaces(
 	${PROJECT_NAME}
 	"msg/HardwareStatus.msg" 
+	"srv/ComputeRectangleArea.srv" 
 	#"msg/Num.msg"
 	#"msg/Sphere.msg"
 	#"srv/AddThreeInts.srv"
