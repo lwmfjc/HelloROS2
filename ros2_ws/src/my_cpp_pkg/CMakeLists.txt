@@ -12,6 +12,8 @@ find_package(rclcpp REQUIRED)
 #查找并配置依赖
 #找到已经安装的 example_interfaces，并把它提供的 CMake 配置信息加载进来。
 find_package(example_interfaces REQUIRED)
+ 
+find_package(my_robot_interfaces REQUIRED)
 
 #添加可执行文件及其依赖项
 add_executable(cpp_node src/my_first_node.cpp)
@@ -33,6 +35,9 @@ ament_target_dependencies(add_two_ints_client_no_oop rclcpp example_interfaces)
 add_executable(add_two_ints_client src/add_two_ints_client.cpp)
 ament_target_dependencies(add_two_ints_client rclcpp example_interfaces)
 
+add_executable(hw_status_publisher src/hardware_status_publisher.cpp)
+ament_target_dependencies(hw_status_publisher rclcpp my_robot_interfaces)
+
 #安装
 #将可执行文件安装到 lib/${PROJECT_NAME}
 install(TARGETS
@@ -42,6 +47,7 @@ install(TARGETS
   add_two_ints_server
   add_two_ints_client_no_oop
   add_two_ints_client
+  hw_status_publisher
   DESTINATION lib/${PROJECT_NAME}
 )
 
