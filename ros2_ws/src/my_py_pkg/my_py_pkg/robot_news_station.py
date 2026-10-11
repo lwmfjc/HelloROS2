@@ -7,10 +7,13 @@ from rclpy.node import Node
 from example_interfaces.msg import String
 
 
-class MyCustomNode(Node):  # MODIFY NAME
+class MyCustomNode(Node):  
     def __init__(self):
-        super().__init__("robot_news_station")  # MODIFY NAME
-        self.robot_name_ = "C3PO"
+        super().__init__("robot_news_station")  
+        
+        self.declare_parameter("robot_name","C3PO")
+        self.robot_name_ = self.get_parameter("robot_name").value
+
         # 创建发布者
         # 类型，话题名称，队列大小
         self.publisher_ = self.create_publisher(String, "/robot_news", 10)
@@ -31,7 +34,7 @@ class MyCustomNode(Node):  # MODIFY NAME
 
 def main(args=None):
     rclpy.init(args=args)
-    node = MyCustomNode()  # MODIFY NAME
+    node = MyCustomNode()  
     rclpy.spin(node)
     rclpy.shutdown()
 
