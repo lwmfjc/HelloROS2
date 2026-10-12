@@ -1,0 +1,8 @@
+<launch>
+    <!--在xml启动文件中包含另一个.py启动文件-->
+    <!--find-pkg-share将在包内找到share-->
+    <!--后面跟着包名，这里是my_robot_bringup，也可以是其他包-->
+    <!--和CMakeLists.txt中的DESTINATION
+    share/${PROJECT_NAME}/对应-->
+    <include file="${find-pkg-share} my_robot_bringup/launch/number_ap.launch.py" />
+</launch>
