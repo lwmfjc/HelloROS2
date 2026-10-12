@@ -14,16 +14,32 @@ public:
 
         number_publisher_ = this->create_publisher<example_interfaces::msg::Int64>("number_count", 10);
 
-       // reset_counter_service_=this-
+        reset_counter_service_ = this->create_service<example_interfaces::srv::SetBool>("reset_counter", std::bind(&NumberCounterNode::callbackResetCounter, this, _1, _2));
 
         RCLCPP_INFO(this->get_logger(), "Number counter has been started.");
     }
 
 private:
+    void callbackResetCounter(const example_interfaces::srv::SetBool::Request::SharedPtr request, const example_interfaces::srv::SetBool::Response::SharedPtr response)
+    {
+        if (request->data)
+        {
+            counter_ = 0;
+            response->success = true;
+            response->message = "ok";
+        }
+        else
+        {
+            response->success = false;
+            response->message = "Counter has not been reset";
+
+        }
+    }
     void callbackNumber(const example_interfaces::msg::Int64::SharedPtr msg)
     {
         counter_ += msg->data;
         auto new_msg = example_interfaces::msg::Int64();
+        new_msg.data=counter_;
         number_publisher_->publish(new_msg);
     }
     int counter_ = 0;

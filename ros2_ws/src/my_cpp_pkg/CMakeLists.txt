@@ -42,6 +42,10 @@ add_executable(number_publisher src/number_publisher.cpp)
 ament_target_dependencies(number_publisher rclcpp example_interfaces)
 
 
+add_executable(number_counter src/number_counter.cpp)
+ament_target_dependencies(number_counter rclcpp example_interfaces)
+
+
 #安装
 #将可执行文件安装到 lib/${PROJECT_NAME}
 install(TARGETS
@@ -53,6 +57,7 @@ install(TARGETS
   add_two_ints_client
   hw_status_publisher
   number_publisher
+  number_counter
   DESTINATION lib/${PROJECT_NAME}
 )
 
