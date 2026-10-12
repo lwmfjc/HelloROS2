@@ -1,0 +1,5 @@
+<launch>
+    <!--所有的内容都放在这个launch中-->
+    <node pkg="my_py_pkg" exec="number_publisher" />
+    <node pkg="my_cpp_pkg" exec="number_count" />
+</launch>

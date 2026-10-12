@@ -9,7 +9,7 @@ class SmartphoneNode : public rclcpp::Node
 public:
     SmartphoneNode() : Node("smartphone")
     {
-        //创建发布者，绑定回调
+        //创建订阅者，绑定回调
         //一个参数
         subsciber_ = this->create_subscription<example_interfaces::msg::String>("robot_news", 10, std::bind(&SmartphoneNode::callbackRobotNews, this,_1));
         //如果是两个参数
