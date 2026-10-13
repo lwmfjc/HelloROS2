@@ -3,23 +3,28 @@
     __node:=robot_news_station_glskard -p robot_name:="Glskard"-->
     <node pkg="my_py_pkg" exec="robot_news_station"
         name="robot_news_station_glskard">
-        <param name="robot_name" value="Glskard" />
+        <!-- <param name="robot_name" value="Glskard" /> -->
+        <param from="$(find-pkg-share my_robot_bringup)/config/radio_config.yaml" />
     </node>
     <node pkg="my_py_pkg" exec="robot_news_station"
         name="robot_news_station_bb8">
-        <param name="robot_name" value="BB8" />
+        <!-- <param name="robot_name" value="BB8" /> -->
+        <param from="$(find-pkg-share my_robot_bringup)/config/radio_config.yaml" />
     </node>
     <node pkg="my_py_pkg" exec="robot_news_station"
         name="robot_news_station_daneel">
-        <param name="robot_name" value="Daneel" />
+        <!-- <param name="robot_name" value="Daneel" /> -->
+        <param from="$(find-pkg-share my_robot_bringup)/config/radio_config.yaml" />
     </node>
     <node pkg="my_py_pkg" exec="robot_news_station"
         name="robot_news_station_jander">
-        <param name="robot_name" value="Jander" />
+        <!-- <param name="robot_name" value="Jander" /> -->
+        <param from="$(find-pkg-share my_robot_bringup)/config/radio_config.yaml" />
     </node>
     <node pkg="my_py_pkg" exec="robot_news_station"
         name="robot_news_station_c3po">
-        <param name="robot_name" value="C3po" />
+        <!-- <param name="robot_name" value="C3po" /> -->
+        <param from="$(find-pkg-share my_robot_bringup)/config/radio_config.yaml" />
     </node>
 
     <node pkg="my_py_pkg" exec="smartphone" />
