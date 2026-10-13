@@ -16,8 +16,9 @@ def generate_launch_description():
         package="my_py_pkg",
         executable="number_publisher",
         name="my_number_publisher",
+        namespace="/abc",
         #元组列表，为每个需要的重映射提供一个元组
-        remappings=[("/number", "/my_number")],
+        remappings=[("number", "my_number")],
         # parameters=[
         #     {"number": 12},
         #     {"timer_perior": 1.3}
@@ -29,8 +30,9 @@ def generate_launch_description():
     number_counter = Node(
         package="my_cpp_pkg",
         executable="number_counter",
+        namespace="/abc",
         name="my_number_counter",
-        remappings=[("/number", "/my_number")],
+        remappings=[("number", "my_number")],
     )
 
     # 添加到LaunchDescription中
