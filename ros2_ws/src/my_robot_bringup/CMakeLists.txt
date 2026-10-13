@@ -11,7 +11,7 @@ find_package(ament_cmake REQUIRED)
 #提供指令：想要安装launch文件夹，以及launch文件夹
 #内的所有内容
 install(DIRECTORY
-  launch
+  launch config
   # 将launch目录安装到 install/<package_name>/share/<package_name>/ 下
   DESTINATION share/${PROJECT_NAME}/
 )

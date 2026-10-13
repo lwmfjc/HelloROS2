@@ -4,8 +4,12 @@
     <node pkg="my_py_pkg" exec="number_publisher" name="my_number_publisher">
         <!-- 重映射话题名称，对服务也有效果 -->
         <remap from="/number" to="/my_number" />
-        <param name="number" value="6" />
-        <param name="timer_period" value="1.5" />
+
+        <!--在xml启动文件中包含param文件-->
+        <param from="$(find-pkg-share my_robot_bringup)/config/number_app.yaml" />
+
+        <!-- <param name="number" value="6" />
+        <param name="timer_period" value="1.5" /> -->
     </node>
     <node pkg="my_cpp_pkg" exec="number_counter" name="my_number_counter">
         <remap from="/number" to="/my_number" />
