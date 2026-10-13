@@ -1,23 +1,29 @@
 from launch import LaunchDescription
 from launch_ros.actions import Node
 
-#固定的generate_launch_description名字
+
+# 固定的generate_launch_description名字
 def generate_launch_description():
-    ld=LaunchDescription()
+    ld = LaunchDescription()
 
-    #创建一个启动节点对象
-    number_publisher=Node(
+    # 创建一个启动节点对象
+    number_publisher = Node(
         package="my_py_pkg",
-        executable="number_publisher"
+        executable="number_publisher",
+        name="my_number_publisher",
+        #元组列表，为每个需要的重映射提供一个元组
+        remappings=[("/number", "/my_number")],
     )
 
-    #创建一个启动节点对象
-    number_counter=Node(
+    # 创建一个启动节点对象
+    number_counter = Node(
         package="my_cpp_pkg",
-        executable="number_counter"
+        executable="number_counter",
+        name="my_number_counter",
+        remappings=[("/number", "/my_number")],
     )
 
-    #添加到LaunchDescription中
+    # 添加到LaunchDescription中
     ld.add_action(number_publisher)
     ld.add_action(number_counter)
 
