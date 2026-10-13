@@ -1,0 +1,26 @@
+<launch>
+    <!--ros2 run my_py_pkg robot_news_station \-\-ros-args -r
+    __node:=robot_news_station_glskard -p robot_name:="Glskard"-->
+    <node pkg="my_py_pkg" exec="robot_news_station"
+        name="robot_news_station_glskard">
+        <param name="robot_name" value="Glskard" />
+    </node>
+    <node pkg="my_py_pkg" exec="robot_news_station"
+        name="robot_news_station_bb8">
+        <param name="robot_name" value="BB8" />
+    </node>
+    <node pkg="my_py_pkg" exec="robot_news_station"
+        name="robot_news_station_daneel">
+        <param name="robot_name" value="Daneel" />
+    </node>
+    <node pkg="my_py_pkg" exec="robot_news_station"
+        name="robot_news_station_jander">
+        <param name="robot_name" value="Jander" />
+    </node>
+    <node pkg="my_py_pkg" exec="robot_news_station"
+        name="robot_news_station_c3po">
+        <param name="robot_name" value="C3po" />
+    </node>
+
+    <node pkg="my_py_pkg" exec="smartphone" />
+</launch>
